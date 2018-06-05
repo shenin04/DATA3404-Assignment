@@ -49,7 +49,7 @@ public class OptAvgDelay {
                 Date actualDept = null;
                 Date scheduledArri = null;
                 Date actualArri = null;
-                String airportName = null;
+                String airlineName = null;
                 long totalDelay = 0;
                 long avgDelay = 0;
                 int cnt = 0;
@@ -62,7 +62,7 @@ public class OptAvgDelay {
 
                     //Format - airline_name, country, date, scheduled dept, scheduled arrival, actual dept, actual arri
                     for (Tuple7<String, String, String, String, String, String, String> data : filteredResult) {
-                        airportName = data.f0;
+                        airlineName = data.f0;
 
                         if(data.f5.equals("") || data.f6.equals("")) continue;
 
@@ -90,7 +90,7 @@ public class OptAvgDelay {
                 hrs = String.format("%02d", avgDelay / (60 * 60 * 1000) % 60);
 
                 if (secs.contains("-") || mins.contains("-") || hrs.contains("-")) {
-                    out.collect(new Tuple2<>(airportName, "00:00:00"));
+                    out.collect(new Tuple2<>(airlineName, "00:00:00"));
                 } else
                     out.collect(new Tuple2<>(airlineName, hrs + ":" + mins + ":" + secs));
             }
