@@ -92,7 +92,7 @@ public class OptAvgDelay {
                 if (secs.contains("-") || mins.contains("-") || hrs.contains("-")) {
                     out.collect(new Tuple2<>(airportName, "00:00:00"));
                 } else
-                    out.collect(new Tuple2<>(airportName, hrs + ":" + mins + ":" + secs));
+                    out.collect(new Tuple2<>(airlineName, hrs + ":" + mins + ":" + secs));
             }
         });
 
